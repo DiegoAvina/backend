@@ -3,6 +3,7 @@
 namespace App\Services\Leads;
 
 use App\Enums\LeadSource;
+use App\Events\LeadSubmissionReceived;
 use App\Models\ContactMessage;
 use App\Models\DemoRequest;
 use App\Models\DiagnosticRequest;
@@ -29,11 +30,17 @@ class LeadIntakeService
      */
     public function captureLead(array $lead, SubmissionContext $context): SubmissionResult
     {
-        return DB::transaction(function () use ($lead, $context): SubmissionResult {
+        $result = DB::transaction(function () use ($lead, $context): SubmissionResult {
             $record = $this->upsertLead($lead, LeadSource::General, $context);
 
             return new SubmissionResult($record, $record->wasRecentlyCreated);
         });
+
+        if ($result->created) {
+            LeadSubmissionReceived::dispatch($result->record);
+        }
+
+        return $result;
     }
 
     /**
@@ -55,7 +62,7 @@ class LeadIntakeService
         }
 
         try {
-            return DB::transaction(function () use ($model, $source, $lead, $attributes, $context): SubmissionResult {
+            $result = DB::transaction(function () use ($model, $source, $lead, $attributes, $context): SubmissionResult {
                 $leadRecord = $this->upsertLead($lead, $source, $context);
 
                 $record = $model::query()->create([
@@ -70,6 +77,10 @@ class LeadIntakeService
 
                 return new SubmissionResult($record, true);
             });
+
+            LeadSubmissionReceived::dispatch($result->record);
+
+            return $result;
         } catch (UniqueConstraintViolationException $exception) {
             // Dos reintentos simultáneos con la misma llave: gana el primero.
             $existing = $this->findByIdempotencyKey($model, $context->idempotencyKey);

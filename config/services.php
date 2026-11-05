@@ -43,6 +43,9 @@ return [
     'frontend' => [
         'service_key' => env('FRONTEND_SERVICE_KEY'),
         'content_rate_limit' => (int) env('API_CONTENT_RATE_LIMIT', 300),
+        // Webhook de revalidación de Next.js (POST /api/revalidate). Vacíos = desactivado.
+        'revalidate_url' => env('FRONTEND_REVALIDATE_URL'),
+        'revalidate_secret' => env('FRONTEND_REVALIDATE_SECRET'),
     ],
 
 ];

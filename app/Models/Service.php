@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ServiceGroup;
+use App\Models\Concerns\NormalizesSeo;
 use App\Models\Concerns\Publishable;
 use Database\Factories\ServiceFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -17,13 +18,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 #[RouteKey('slug')]
 #[Fillable([
-    'name', 'slug', 'group', 'summary', 'headline', 'description', 'icon',
+    'name', 'slug', 'group', 'summary', 'headline', 'description', 'body', 'icon', 'image',
     'benefits', 'includes', 'ideal_for', 'seo', 'is_published', 'sort_order',
 ])]
 class Service extends Model
 {
     /** @use HasFactory<ServiceFactory> */
-    use HasFactory, Publishable;
+    use HasFactory, NormalizesSeo, Publishable;
 
     /**
      * @return array<string, string>

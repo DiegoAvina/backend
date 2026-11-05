@@ -1,6 +1,10 @@
 <?php
 
+use App\Enums\UserRole;
+use App\Models\User;
+use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 /*
@@ -60,6 +64,24 @@ function serviceHeaders(array $extra = []): array
         'X-Client-User-Agent' => 'Mozilla/5.0 (Pruebas)',
         ...$extra,
     ];
+}
+
+/**
+ * Crea un usuario activo con el rol indicado (sembrando roles y permisos si
+ * hace falta) y lo autentica en el panel.
+ */
+function actingAsRole(UserRole $role, array $attributes = []): User
+{
+    if (! Role::query()->exists()) {
+        (new RolesAndPermissionsSeeder)->run();
+    }
+
+    $user = User::factory()->create($attributes);
+    $user->assignRole($role->value);
+
+    test()->actingAs($user);
+
+    return $user;
 }
 
 /**

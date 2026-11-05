@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\NormalizesSeo;
 use App\Models\Concerns\Publishable;
 use Database\Factories\SolutionFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -16,13 +17,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 #[RouteKey('slug')]
 #[Fillable([
-    'name', 'slug', 'headline', 'summary', 'icon', 'signals', 'approach', 'outcomes',
+    'name', 'slug', 'headline', 'summary', 'body', 'icon', 'image', 'signals', 'approach', 'outcomes',
     'seo', 'is_published', 'sort_order',
 ])]
 class Solution extends Model
 {
     /** @use HasFactory<SolutionFactory> */
-    use HasFactory, Publishable;
+    use HasFactory, NormalizesSeo, Publishable;
 
     /**
      * @return array<string, string>

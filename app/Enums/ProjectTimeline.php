@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Plazo en que el prospecto quiere comenzar.
  */
-enum ProjectTimeline: string
+enum ProjectTimeline: string implements HasLabel
 {
     case Immediate = 'inmediato';
     case OneToThreeMonths = '1-3-meses';
@@ -23,6 +25,11 @@ enum ProjectTimeline: string
             self::ThreeToSixMonths => 'En 3 a 6 meses',
             self::Exploring => 'Solo estoy explorando opciones',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

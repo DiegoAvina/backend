@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Concerns\RendersContent;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -11,6 +12,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class ServiceResource extends JsonResource
 {
+    use RendersContent;
+
     /**
      * @return array<string, mixed>
      */
@@ -24,7 +27,10 @@ class ServiceResource extends JsonResource
             'summary' => $this->summary,
             'headline' => $this->headline,
             'description' => $this->description,
+            'body' => $this->body,
+            'body_html' => $this->markdownToHtml($this->body),
             'icon' => $this->icon,
+            'image_url' => $this->imageUrl($this->image),
             'benefits' => $this->benefits ?? [],
             'includes' => $this->includes ?? [],
             'ideal_for' => $this->ideal_for ?? [],

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Enums\CategoryType;
+use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\ListProductsRequest;
 use App\Http\Resources\V1\ProductResource;
@@ -22,7 +23,12 @@ class ProductController extends Controller
                 'category',
                 fn (Builder $category) => $category->where('type', CategoryType::Product)->where('slug', $slug),
             ))
-            ->when($request->validated('status'), fn (Builder $query, string $status) => $query->where('status', $status))
+            // Los descontinuados solo se listan si se piden explícitamente.
+            ->when(
+                $request->validated('status'),
+                fn (Builder $query, string $status) => $query->where('status', $status),
+                fn (Builder $query) => $query->where('status', '!=', ProductStatus::Discontinued),
+            )
             ->when($request->has('featured'), fn (Builder $query) => $query->where('is_featured', $request->boolean('featured')));
 
         return ApiResponse::paginated(

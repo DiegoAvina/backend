@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Modalidad preferida para una reunión de diagnóstico.
  */
-enum ContactMethod: string
+enum ContactMethod: string implements HasLabel
 {
     case VideoCall = 'videollamada';
     case PhoneCall = 'llamada';
@@ -21,6 +23,11 @@ enum ContactMethod: string
             self::PhoneCall => 'Llamada telefónica',
             self::InPerson => 'Reunión presencial',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Concerns\RendersContent;
 use App\Models\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -11,6 +12,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class SolutionResource extends JsonResource
 {
+    use RendersContent;
+
     /**
      * @return array<string, mixed>
      */
@@ -21,7 +24,10 @@ class SolutionResource extends JsonResource
             'name' => $this->name,
             'headline' => $this->headline,
             'summary' => $this->summary,
+            'body' => $this->body,
+            'body_html' => $this->markdownToHtml($this->body),
             'icon' => $this->icon,
+            'image_url' => $this->imageUrl($this->image),
             'signals' => $this->signals ?? [],
             'approach' => $this->approach ?? [],
             'outcomes' => $this->outcomes ?? [],

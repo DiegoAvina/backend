@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProductStatus;
+use App\Models\Concerns\NormalizesSeo;
 use App\Models\Concerns\Publishable;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -18,13 +19,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 #[RouteKey('slug')]
 #[Fillable([
-    'category_id', 'name', 'slug', 'tagline', 'description', 'audience', 'status', 'icon',
+    'category_id', 'name', 'slug', 'tagline', 'description', 'body', 'audience', 'status', 'icon', 'image',
     'features', 'problems', 'modules', 'seo', 'is_featured', 'is_published', 'sort_order',
 ])]
 class Product extends Model
 {
     /** @use HasFactory<ProductFactory> */
-    use HasFactory, Publishable;
+    use HasFactory, NormalizesSeo, Publishable;
 
     /**
      * @return array<string, string>

@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Canal por el que llegó un prospecto.
  */
-enum LeadSource: string
+enum LeadSource: string implements HasLabel
 {
     case General = 'general';
     case Contact = 'contact';
@@ -25,6 +27,11 @@ enum LeadSource: string
             self::Demo => 'Demo o acceso anticipado',
             self::Diagnostic => 'Diagnóstico',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Rango de presupuesto declarado en una cotización (MXN).
  */
-enum BudgetRange: string
+enum BudgetRange: string implements HasLabel
 {
     case ToBeDefined = 'por-definir';
     case Under100k = 'menos-100k';
@@ -25,6 +27,11 @@ enum BudgetRange: string
             self::From300kTo750k => '$300,000 a $750,000 MXN',
             self::Over750k => 'Más de $750,000 MXN',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

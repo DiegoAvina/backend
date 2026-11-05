@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Tema de un mensaje de contacto.
  */
-enum ContactSubject: string
+enum ContactSubject: string implements HasLabel
 {
     case Project = 'proyecto';
     case Products = 'productos';
@@ -25,6 +27,11 @@ enum ContactSubject: string
             self::Partnerships => 'Alianzas y proveedores',
             self::Other => 'Otro tema',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

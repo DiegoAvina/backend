@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\V1\LeadController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\QuoteRequestController;
 use App\Http\Controllers\Api\V1\ServiceController;
+use App\Http\Controllers\Api\V1\SettingController;
 use App\Http\Controllers\Api\V1\SolutionController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::pattern('slug', '[a-z0-9]+(?:-[a-z0-9]+)*');
 
 Route::prefix('v1')->name('api.v1.')->group(function (): void {
     Route::middleware('throttle:content-api')->group(function (): void {
+        Route::get('settings/public', [SettingController::class, 'public'])->name('settings.public');
+
         Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
 
         Route::get('products', [ProductController::class, 'index'])->name('products.index');

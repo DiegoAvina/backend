@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Ámbito de una categoría.
  */
-enum CategoryType: string
+enum CategoryType: string implements HasLabel
 {
     case Product = 'product';
     case Article = 'article';
@@ -19,6 +21,11 @@ enum CategoryType: string
             self::Product => 'Producto',
             self::Article => 'Artículo',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

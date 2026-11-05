@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\LeadSource;
 use App\Enums\RequestStatus;
+use App\Models\Concerns\TracksCommercialStatus;
 use Database\Factories\LeadFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Lead extends Model
 {
     /** @use HasFactory<LeadFactory> */
-    use HasFactory;
+    use HasFactory, TracksCommercialStatus;
 
     /**
      * @var array<string, mixed>

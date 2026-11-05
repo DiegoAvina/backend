@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Estado editorial de un artículo.
  */
-enum ArticleStatus: string
+enum ArticleStatus: string implements HasLabel
 {
     case Draft = 'draft';
     case Published = 'published';
@@ -21,6 +23,11 @@ enum ArticleStatus: string
             self::Published => 'Publicado',
             self::Archived => 'Archivado',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

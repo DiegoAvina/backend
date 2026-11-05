@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 trait LeadSubmission
 {
+    use TracksCommercialStatus;
+
     /**
      * Initialize the trait.
      */

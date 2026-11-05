@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\NormalizesSeo;
 use App\Models\Concerns\Publishable;
 use Database\Factories\IndustryFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -14,11 +15,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * Industria atendida, con sus retos y los servicios/productos que aplican.
  */
 #[RouteKey('slug')]
-#[Fillable(['name', 'slug', 'summary', 'icon', 'challenges', 'applications', 'seo', 'is_published', 'sort_order'])]
+#[Fillable(['name', 'slug', 'summary', 'icon', 'image', 'challenges', 'applications', 'seo', 'is_published', 'sort_order'])]
 class Industry extends Model
 {
     /** @use HasFactory<IndustryFactory> */
-    use HasFactory, Publishable;
+    use HasFactory, NormalizesSeo, Publishable;
 
     /**
      * @return array<string, string>

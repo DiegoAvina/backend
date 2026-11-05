@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Concerns\RendersContent;
 use App\Models\Industry;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -11,6 +12,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class IndustryResource extends JsonResource
 {
+    use RendersContent;
+
     /**
      * @return array<string, mixed>
      */
@@ -21,6 +24,7 @@ class IndustryResource extends JsonResource
             'name' => $this->name,
             'summary' => $this->summary,
             'icon' => $this->icon,
+            'image_url' => $this->imageUrl($this->image),
             'challenges' => $this->challenges ?? [],
             'applications' => $this->applications ?? [],
             'related_services' => RelatedContentResource::collection($this->whenLoaded('services')),

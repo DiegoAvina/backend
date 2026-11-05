@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Tamaño de la empresa del prospecto.
  */
-enum CompanySize: string
+enum CompanySize: string implements HasLabel
 {
     case Micro = '1-10';
     case Small = '11-50';
@@ -23,6 +25,11 @@ enum CompanySize: string
             self::Medium => '51 a 250 colaboradores',
             self::Large => 'Más de 250 colaboradores',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

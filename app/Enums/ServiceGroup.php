@@ -2,10 +2,12 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasLabel;
+
 /**
  * Línea de servicio a la que pertenece un servicio.
  */
-enum ServiceGroup: string
+enum ServiceGroup: string implements HasLabel
 {
     case Software = 'software';
     case AutomationAi = 'automation_ai';
@@ -21,6 +23,11 @@ enum ServiceGroup: string
             self::AutomationAi => 'Automation & AI',
             self::Infrastructure => 'IT Infrastructure',
         };
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label();
     }
 
     /**

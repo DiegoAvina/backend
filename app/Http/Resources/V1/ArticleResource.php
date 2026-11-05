@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Concerns\RendersContent;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -13,6 +14,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class ArticleResource extends JsonResource
 {
+    use RendersContent;
+
     /**
      * @return array<string, mixed>
      */
@@ -23,7 +26,8 @@ class ArticleResource extends JsonResource
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->when($request->routeIs('api.v1.articles.show'), $this->body),
-            'cover_image' => $this->cover_image,
+            'body_html' => $this->when($request->routeIs('api.v1.articles.show'), fn () => $this->markdownToHtml($this->body)),
+            'cover_image_url' => $this->imageUrl($this->cover_image),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'author' => $this->whenLoaded('author', fn () => $this->author?->name),
             'published_at' => $this->published_at?->toIso8601String(),

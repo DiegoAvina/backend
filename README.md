@@ -1,9 +1,11 @@
-# Backend · API Laravel 13
+# Backend · API Laravel 13 + panel Filament 5
 
-API REST v1 de la plataforma corporativa: contenido público (productos, servicios, soluciones, industrias, artículos, categorías) y recepción de las solicitudes comerciales enviadas desde el frontend Next.js.
+- **API REST v1:** contenido público (productos, servicios, soluciones, industrias, artículos, categorías y configuración) y recepción de las solicitudes comerciales del frontend Next.js.
+- **Panel administrativo** en `/admin`: contenido, CRM, usuarios, roles, configuración y auditoría.
 
 - Referencia de endpoints: [`docs/06-api-reference.md`](../docs/06-api-reference.md)
 - Esquema de base de datos: [`docs/07-database-schema.md`](../docs/07-database-schema.md)
+- Panel, roles y permisos: [`docs/08-panel-administrativo.md`](../docs/08-panel-administrativo.md)
 - Arquitectura y decisiones: [`docs/01-arquitectura.md`](../docs/01-arquitectura.md), [`docs/05-decisiones-tecnicas.md`](../docs/05-decisiones-tecnicas.md)
 
 ## Requisitos
@@ -46,15 +48,27 @@ php artisan key:generate
    php artisan db:seed
    ```
 
-   El *seeder* es idempotente: se puede volver a ejecutar sin duplicar ni borrar nada.
+   Los *seeders* son idempotentes: roles y permisos, claves de configuración (vacías) y contenido inicial. Se pueden volver a ejecutar sin duplicar ni borrar nada.
 
-4. **Servidor:**
+4. **Imágenes públicas:** `php artisan storage:link`.
+
+5. **Primer usuario del panel** (la contraseña se pide de forma oculta):
 
    ```bash
-   php artisan serve      # http://localhost:8000
+   php artisan app:create-admin            # superadministrador
+   php artisan app:create-admin --role=sales
    ```
 
-   Comprueba que responde: `http://localhost:8000/api/v1/products`.
+6. **Servidor y colas:**
+
+   ```bash
+   php artisan serve      # http://localhost:8000  ·  panel en /admin
+   php artisan queue:work # revalidación del frontend y avisos (en otra terminal)
+   ```
+
+   En local puedes evitar el *worker* con `QUEUE_CONNECTION=sync`. Comprueba que la API responde: `http://localhost:8000/api/v1/products`.
+
+7. **Revalidación del frontend** (opcional en local): genera un secreto, guárdalo en `FRONTEND_REVALIDATE_SECRET` y en `REVALIDATE_SECRET` de `frontend/.env.local`, y deja `FRONTEND_REVALIDATE_URL=http://localhost:3000/api/revalidate`. Sin esto, los cambios del panel tardan hasta 1 h en verse en el sitio.
 
 ## Variables de entorno propias
 
@@ -64,6 +78,8 @@ php artisan key:generate
 | `CORS_ALLOWED_ORIGINS` | Orígenes del navegador que pueden leer la API pública, separados por coma. |
 | `API_CONTENT_RATE_LIMIT` | Lecturas por minuto y por IP (300 por defecto). |
 | `APP_LOCALE` | `es`: mensajes de validación en español (`lang/es/validation.php`). |
+| `FRONTEND_REVALIDATE_URL`, `FRONTEND_REVALIDATE_SECRET` | Webhook firmado a Next.js al publicar o editar contenido. Vacíos = desactivado. |
+| `LEAD_NOTIFICATIONS_ENABLED`, `COMMERCIAL_NOTIFICATION_EMAILS` | Avisos por correo al equipo comercial. **Desactivados** hasta contar con SMTP (`MAIL_*`) y autorización. |
 
 Nunca subas `.env` al repositorio. En producción usa `APP_ENV=production` y `APP_DEBUG=false`: con `APP_DEBUG=false` los errores 500 no incluyen ningún detalle técnico.
 
@@ -97,15 +113,25 @@ app/
 │   ├── Requests/Api/V1/        listados (filtros/orden) y formularios (limpieza y validación)
 │   ├── Resources/V1/           forma pública de cada recurso
 │   └── Responses/ApiResponse   formato { success, message, data | errors }
-├── Models/                     + Concerns/Publishable, Concerns/LeadSubmission
-└── Services/Leads/             LeadIntakeService (prospecto + solicitud + idempotencia)
+├── Filament/                   panel /admin
+│   ├── Resources/              contenido, comercial (CRM), usuarios, roles, auditoría
+│   ├── Pages/ManageSettings    configuración del sitio
+│   ├── Widgets/                dashboard (KPI, gráficas, tablas)
+│   └── Support/                campos, acciones y bases compartidas
+├── Models/                     + Concerns/ (Publishable, LeadSubmission, TracksCommercialStatus, NormalizesSeo)
+├── Policies/                   una por modelo (ContentPolicy, CommercialPolicy…)
+├── Observers/                  auditoría, historial de estados, revalidación, limpieza de imágenes
+├── Jobs/                       RevalidateFrontendContent (webhook firmado)
+├── Events/ Listeners/ Notifications/   aviso comercial (desactivado por defecto)
+├── Console/Commands/           app:create-admin
+└── Services/                   Leads (intake, seguimiento), Audit, Settings, Dashboard
 database/
 ├── migrations/
 ├── factories/
-└── seeders/                    ContentSeeder + data/*.json (exportado de frontend/src/data)
+└── seeders/                    roles y permisos, configuración, contenido + data/*.json
 lang/es/validation.php
 routes/api.php                  /api/v1
-tests/Feature/{Api,Database,Models}, tests/Unit
+tests/Feature/{Admin,Api,Database,Integrations,Models}, tests/Unit
 ```
 
 `CLAUDE.md` y `AGENTS.md` contienen guías para asistentes de IA (Laravel Boost); no afectan la aplicación.
