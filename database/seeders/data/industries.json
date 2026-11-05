@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "manufactura",
+    "name": "Manufactura",
+    "summary": "Visibilidad de producción, mantenimiento de equipos y control de materiales.",
+    "challenges": [
+      "Paros no planificados",
+      "Trazabilidad de lotes",
+      "Control de mermas"
+    ],
+    "icon": "factory",
+    "applications": [
+      "Planes de mantenimiento preventivo y órdenes de servicio para equipos de planta",
+      "Control de materias primas, producto en proceso y producto terminado",
+      "Tableros de producción con indicadores por turno y por línea",
+      "Integración entre producción, almacén y sistema administrativo"
+    ],
+    "relatedServices": [
+      "desarrollo-software",
+      "infraestructura",
+      "inteligencia-artificial"
+    ],
+    "relatedProducts": [
+      "mantenimiento",
+      "inventarios",
+      "ordenes-trabajo"
+    ]
+  },
+  {
+    "slug": "comercio",
+    "name": "Comercio",
+    "summary": "Ventas, inventario y canales digitales conectados en una sola operación.",
+    "challenges": [
+      "Inventario desalineado",
+      "Venta en múltiples canales",
+      "Seguimiento a clientes"
+    ],
+    "icon": "store",
+    "applications": [
+      "Tiendas en línea conectadas con inventario y facturación",
+      "Inventario multisucursal con alertas de reabastecimiento",
+      "Seguimiento comercial y programas de clientes frecuentes",
+      "Reportes de ventas por canal, sucursal y producto"
+    ],
+    "relatedServices": [
+      "ecommerce",
+      "desarrollo-web",
+      "soporte-it"
+    ],
+    "relatedProducts": [
+      "inventarios",
+      "crm",
+      "control-gastos"
+    ]
+  },
+  {
+    "slug": "distribucion-logistica",
+    "name": "Distribución y logística",
+    "summary": "Seguimiento de pedidos, rutas y almacenes con información confiable.",
+    "challenges": [
+      "Estatus de entregas",
+      "Control de almacenes",
+      "Evidencias de entrega"
+    ],
+    "icon": "truck",
+    "applications": [
+      "Aplicaciones móviles para evidencias de entrega con foto y firma",
+      "Control de almacenes, ubicaciones y transferencias",
+      "Portales para que los clientes consulten el estatus de sus pedidos",
+      "Integración con paqueterías y sistemas de clientes"
+    ],
+    "relatedServices": [
+      "aplicaciones-moviles",
+      "desarrollo-software",
+      "infraestructura"
+    ],
+    "relatedProducts": [
+      "inventarios",
+      "ordenes-trabajo",
+      "proveedores"
+    ]
+  },
+  {
+    "slug": "servicios-profesionales",
+    "name": "Servicios profesionales",
+    "summary": "Gestión de proyectos, clientes y documentos sin depender del correo.",
+    "challenges": [
+      "Horas y rentabilidad",
+      "Gestión documental",
+      "Seguimiento comercial"
+    ],
+    "icon": "briefcase",
+    "applications": [
+      "Gestión documental con flujos de revisión y aprobación",
+      "Seguimiento de oportunidades, propuestas y clientes",
+      "Registro de horas y rentabilidad por proyecto",
+      "Portales seguros para compartir información con clientes"
+    ],
+    "relatedServices": [
+      "desarrollo-web",
+      "ciberseguridad",
+      "soporte-it"
+    ],
+    "relatedProducts": [
+      "gestion-documental",
+      "crm",
+      "control-gastos"
+    ]
+  }
+]

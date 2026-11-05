@@ -1,0 +1,186 @@
+[
+  {
+    "slug": "automatizacion",
+    "name": "Automatización de procesos",
+    "headline": "Que el trabajo repetitivo se haga solo.",
+    "summary": "Identificamos las tareas manuales que más tiempo consumen y las convertimos en flujos automáticos, con reglas claras, notificaciones y registro de cada paso.",
+    "icon": "workflow",
+    "signals": [
+      "Tu equipo captura la misma información en varios sistemas.",
+      "Las solicitudes avanzan por correo y nadie sabe en qué paso están.",
+      "Los reportes se arman a mano cada semana o cada mes.",
+      "Los errores de captura generan retrabajos y reclamos."
+    ],
+    "approach": [
+      {
+        "title": "Mapeo del proceso actual",
+        "description": "Documentamos cómo fluye hoy el trabajo, quién interviene y dónde se generan los retrasos."
+      },
+      {
+        "title": "Priorización por impacto",
+        "description": "Elegimos primero las automatizaciones que liberan más tiempo con menor riesgo."
+      },
+      {
+        "title": "Flujos con reglas y aprobaciones",
+        "description": "Configuramos disparadores, validaciones, aprobaciones y notificaciones automáticas."
+      },
+      {
+        "title": "Medición y ajuste",
+        "description": "Registramos tiempos y volúmenes para mejorar el flujo con datos reales."
+      }
+    ],
+    "outcomes": [
+      "Menos capturas manuales y errores de transcripción",
+      "Trazabilidad de cada solicitud de principio a fin",
+      "Tiempo del equipo enfocado en tareas de mayor valor"
+    ],
+    "relatedServices": [
+      "desarrollo-software",
+      "inteligencia-artificial",
+      "soporte-it"
+    ],
+    "relatedProducts": [
+      "gestion-documental",
+      "control-gastos",
+      "ordenes-trabajo"
+    ]
+  },
+  {
+    "slug": "digitalizacion",
+    "name": "Digitalización empresarial",
+    "headline": "Del papel y las hojas de cálculo a sistemas confiables.",
+    "summary": "Convertimos formatos en papel, archivos sueltos y hojas de cálculo críticas en sistemas centralizados, seguros y accesibles desde cualquier lugar.",
+    "icon": "file-stack",
+    "signals": [
+      "Hay hojas de cálculo de las que depende la operación y solo una persona entiende.",
+      "Los formatos se imprimen, se firman y se escanean.",
+      "Encontrar un documento o un dato histórico toma demasiado tiempo.",
+      "Cada área tiene su propia versión de la información."
+    ],
+    "approach": [
+      {
+        "title": "Inventario de información",
+        "description": "Identificamos qué información existe, dónde vive, quién la usa y qué tan crítica es."
+      },
+      {
+        "title": "Diseño del modelo de datos",
+        "description": "Estructuramos la información para que sea consistente, consultable y segura."
+      },
+      {
+        "title": "Sistema o producto adecuado",
+        "description": "Implementamos un sistema a medida o uno de nuestros productos, según lo que convenga."
+      },
+      {
+        "title": "Migración y adopción",
+        "description": "Trasladamos la información existente y acompañamos al equipo en el cambio."
+      }
+    ],
+    "outcomes": [
+      "Una sola fuente de información para toda la empresa",
+      "Acceso controlado por rol y desde cualquier dispositivo",
+      "Historial consultable y respaldado"
+    ],
+    "relatedServices": [
+      "desarrollo-software",
+      "desarrollo-web",
+      "aplicaciones-moviles"
+    ],
+    "relatedProducts": [
+      "gestion-documental",
+      "inventarios",
+      "asistencia-personal"
+    ]
+  },
+  {
+    "slug": "integraciones",
+    "name": "Integración de sistemas",
+    "headline": "Sistemas que comparten información sin recapturas.",
+    "summary": "Conectamos tu ERP, CRM, tienda en línea, facturación y sistemas internos mediante APIs para que la información fluya automáticamente entre ellos.",
+    "icon": "plug",
+    "signals": [
+      "Los pedidos de la tienda en línea se recapturan en el sistema administrativo.",
+      "Ventas, almacén y contabilidad trabajan con cifras distintas.",
+      "Cambiar un precio o un cliente implica actualizar varios sistemas.",
+      "Hay procesos que se detienen cuando una persona no está para pasar datos."
+    ],
+    "approach": [
+      {
+        "title": "Mapa de sistemas",
+        "description": "Identificamos qué sistemas existen, qué datos comparten y cuál es la fuente de verdad de cada uno."
+      },
+      {
+        "title": "Diseño de la integración",
+        "description": "Definimos APIs, frecuencias de sincronización, reglas de conflicto y manejo de errores."
+      },
+      {
+        "title": "Desarrollo y monitoreo",
+        "description": "Construimos los conectores con registro de eventos y alertas ante fallas."
+      },
+      {
+        "title": "Documentación",
+        "description": "Entregamos la documentación técnica para que la integración sea mantenible."
+      }
+    ],
+    "outcomes": [
+      "Datos consistentes entre áreas y sistemas",
+      "Menos tareas de captura y conciliación",
+      "Procesos que continúan sin intervención manual"
+    ],
+    "relatedServices": [
+      "desarrollo-software",
+      "ecommerce",
+      "infraestructura"
+    ],
+    "relatedProducts": [
+      "crm",
+      "inventarios",
+      "proveedores"
+    ]
+  },
+  {
+    "slug": "inteligencia-empresarial",
+    "name": "Inteligencia empresarial",
+    "headline": "Indicadores claros para decidir con datos.",
+    "summary": "Consolidamos la información de tus sistemas en tableros e indicadores actualizados, para que la dirección y cada área conozcan el estado real de la operación.",
+    "icon": "trending-up",
+    "signals": [
+      "Los reportes llegan tarde, incompletos o con cifras que no coinciden.",
+      "Las decisiones se toman con base en intuición más que en datos.",
+      "Cada área prepara sus propios reportes en hojas de cálculo.",
+      "No hay indicadores definidos para medir el desempeño."
+    ],
+    "approach": [
+      {
+        "title": "Definición de indicadores",
+        "description": "Acordamos qué medir, con qué frecuencia y quién es responsable de cada indicador."
+      },
+      {
+        "title": "Consolidación de datos",
+        "description": "Integramos y depuramos la información de tus distintos sistemas."
+      },
+      {
+        "title": "Tableros por rol",
+        "description": "Diseñamos vistas para dirección, gerencias y operación con el nivel de detalle adecuado."
+      },
+      {
+        "title": "Análisis avanzado",
+        "description": "Cuando aporta valor, incorporamos pronósticos y detección de anomalías."
+      }
+    ],
+    "outcomes": [
+      "Indicadores confiables y actualizados",
+      "Reuniones de seguimiento basadas en los mismos datos",
+      "Detección temprana de desviaciones"
+    ],
+    "relatedServices": [
+      "inteligencia-artificial",
+      "desarrollo-software",
+      "infraestructura"
+    ],
+    "relatedProducts": [
+      "crm",
+      "control-gastos",
+      "mantenimiento"
+    ]
+  }
+]

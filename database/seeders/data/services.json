@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "desarrollo-software",
+    "name": "Desarrollo de software a medida",
+    "summary": "Sistemas diseñados alrededor de tu operación, no al revés. Desde herramientas internas hasta plataformas empresariales completas.",
+    "group": "software",
+    "icon": "code",
+    "headline": "Software que se adapta a cómo trabaja tu empresa.",
+    "description": "Cuando las herramientas genéricas obligan a tu equipo a improvisar con hojas de cálculo, correos y capturas dobles, un sistema a medida devuelve el control. Diseñamos y construimos software empresarial alineado a tus procesos, preparado para crecer y fácil de mantener.",
+    "benefits": [
+      {
+        "title": "Procesos a tu medida",
+        "description": "El sistema refleja tus reglas de negocio, flujos de aprobación y formas de trabajo reales."
+      },
+      {
+        "title": "Información en un solo lugar",
+        "description": "Eliminamos archivos sueltos y versiones duplicadas con una base de datos central y segura."
+      },
+      {
+        "title": "Escalable desde el inicio",
+        "description": "Arquitectura modular que permite agregar áreas, usuarios y funcionalidades sin rehacer el sistema."
+      },
+      {
+        "title": "Propiedad y continuidad",
+        "description": "Documentación técnica, código entregado y acompañamiento para que el sistema evolucione contigo."
+      }
+    ],
+    "includes": [
+      "Levantamiento de requerimientos y mapeo de procesos",
+      "Diseño de experiencia de usuario y prototipos",
+      "Desarrollo por iteraciones con entregas revisables",
+      "Pruebas funcionales y de seguridad",
+      "Migración de información existente",
+      "Capacitación, puesta en producción y soporte"
+    ],
+    "idealFor": [
+      "Empresas que operan con hojas de cálculo críticas",
+      "Procesos que ningún software comercial cubre bien",
+      "Organizaciones que necesitan integrar varias áreas"
+    ]
+  },
+  {
+    "slug": "desarrollo-web",
+    "name": "Desarrollo web",
+    "summary": "Sitios y aplicaciones web rápidos, seguros y optimizados para buscadores, pensados para generar oportunidades comerciales.",
+    "group": "software",
+    "icon": "globe",
+    "headline": "Presencia digital que genera oportunidades de negocio.",
+    "description": "Un sitio web corporativo es, muchas veces, el primer contacto de un cliente con tu empresa. Desarrollamos sitios y aplicaciones web rápidos, accesibles y bien posicionados, con formularios y flujos pensados para convertir visitas en oportunidades comerciales.",
+    "benefits": [
+      {
+        "title": "Velocidad y posicionamiento",
+        "description": "Buenas prácticas de rendimiento y SEO técnico desde la primera línea de código."
+      },
+      {
+        "title": "Administrable por tu equipo",
+        "description": "Panel de contenido para actualizar textos, productos o artículos sin depender de desarrolladores."
+      },
+      {
+        "title": "Diseñado para convertir",
+        "description": "Llamados a la acción claros, formularios simples e integración con tus herramientas comerciales."
+      },
+      {
+        "title": "Accesible en cualquier dispositivo",
+        "description": "Diseño responsivo y accesible para móvil, tableta y escritorio."
+      }
+    ],
+    "includes": [
+      "Arquitectura de información y redacción orientada a negocio",
+      "Diseño visual alineado a tu identidad",
+      "Desarrollo con tecnologías modernas y seguras",
+      "Panel administrativo de contenido",
+      "SEO técnico, analítica y datos estructurados",
+      "Hospedaje, certificados HTTPS y mantenimiento"
+    ],
+    "idealFor": [
+      "Empresas que necesitan renovar su sitio corporativo",
+      "Negocios que buscan generar prospectos en línea",
+      "Portales para clientes, proveedores o distribuidores"
+    ]
+  },
+  {
+    "slug": "aplicaciones-moviles",
+    "name": "Aplicaciones móviles",
+    "summary": "Apps para iOS y Android que acercan tus procesos a equipos en campo, clientes y proveedores.",
+    "group": "software",
+    "icon": "smartphone",
+    "headline": "Tus procesos, en el bolsillo de quien los ejecuta.",
+    "description": "Técnicos, vendedores y supervisores trabajan lejos del escritorio. Desarrollamos aplicaciones móviles que capturan información en el momento, funcionan con conectividad limitada y se sincronizan con tus sistemas centrales.",
+    "benefits": [
+      {
+        "title": "Captura en el punto de trabajo",
+        "description": "Fotografías, firmas, ubicación y formularios registrados en el momento en que ocurren."
+      },
+      {
+        "title": "Trabajo sin conexión",
+        "description": "La app guarda la información y la sincroniza cuando recupera la señal."
+      },
+      {
+        "title": "Integrada a tu operación",
+        "description": "Conexión con tu ERP, CRM o sistema a medida para evitar recapturas."
+      },
+      {
+        "title": "Experiencia sencilla",
+        "description": "Interfaces pensadas para usarse con rapidez, incluso en condiciones de campo."
+      }
+    ],
+    "includes": [
+      "Definición de casos de uso y prototipos navegables",
+      "Desarrollo multiplataforma para iOS y Android",
+      "Backend y API de sincronización",
+      "Notificaciones y control de acceso por rol",
+      "Publicación en tiendas o distribución privada",
+      "Soporte y actualizaciones"
+    ],
+    "idealFor": [
+      "Equipos de servicio técnico o mantenimiento en campo",
+      "Fuerzas de venta y levantamiento de pedidos",
+      "Inspecciones, auditorías y evidencias de entrega"
+    ]
+  },
+  {
+    "slug": "ecommerce",
+    "name": "Comercio electrónico",
+    "summary": "Tiendas en línea integradas con tu inventario, facturación y logística para vender sin fricción.",
+    "group": "software",
+    "icon": "shopping-cart",
+    "headline": "Vende en línea con una operación conectada.",
+    "description": "Una tienda en línea solo funciona bien si está conectada con el resto de la operación. Desarrollamos plataformas de comercio electrónico B2C y B2B integradas con inventario, pagos, facturación y envíos para que cada pedido fluya sin intervención manual.",
+    "benefits": [
+      {
+        "title": "Inventario sincronizado",
+        "description": "Existencias y precios actualizados entre tienda, almacén y sistema administrativo."
+      },
+      {
+        "title": "Pagos y facturación",
+        "description": "Integración con pasarelas de pago y emisión de CFDI."
+      },
+      {
+        "title": "Venta B2B y B2C",
+        "description": "Listas de precios por cliente, pedidos recurrentes y portales para distribuidores."
+      },
+      {
+        "title": "Logística integrada",
+        "description": "Cálculo de envíos, guías y seguimiento de pedidos desde un solo panel."
+      }
+    ],
+    "includes": [
+      "Selección de plataforma o desarrollo a medida",
+      "Diseño de catálogo y experiencia de compra",
+      "Integración con pagos, facturación y paqueterías",
+      "Conexión con inventario y ERP",
+      "Analítica de ventas y conversión",
+      "Capacitación y acompañamiento en el lanzamiento"
+    ],
+    "idealFor": [
+      "Comercios que quieren abrir un canal de venta en línea",
+      "Distribuidores con pedidos recurrentes de clientes",
+      "Empresas con tienda en línea desconectada de su operación"
+    ]
+  },
+  {
+    "slug": "inteligencia-artificial",
+    "name": "Inteligencia artificial aplicada",
+    "summary": "Asistentes, clasificación de documentos y análisis predictivo aplicados a problemas concretos de tu negocio.",
+    "group": "automation_ai",
+    "icon": "brain",
+    "headline": "Inteligencia artificial con un objetivo de negocio claro.",
+    "description": "La inteligencia artificial aporta valor cuando resuelve un problema específico y medible. Identificamos dónde puede ahorrar tiempo o mejorar decisiones en tu operación y la implementamos de forma segura, con supervisión humana y sobre tu propia información.",
+    "benefits": [
+      {
+        "title": "Lectura de documentos",
+        "description": "Extracción de datos de facturas, contratos y formularios para eliminar capturas manuales."
+      },
+      {
+        "title": "Asistentes internos",
+        "description": "Consultas en lenguaje natural sobre manuales, políticas y bases de conocimiento de la empresa."
+      },
+      {
+        "title": "Análisis y pronósticos",
+        "description": "Modelos que anticipan demanda, detectan anomalías o priorizan oportunidades."
+      },
+      {
+        "title": "Uso responsable",
+        "description": "Control de acceso, protección de datos y validación humana en decisiones sensibles."
+      }
+    ],
+    "includes": [
+      "Diagnóstico de casos de uso y viabilidad",
+      "Preparación y evaluación de datos",
+      "Prueba de concepto con métricas definidas",
+      "Integración con tus sistemas y flujos",
+      "Políticas de privacidad y seguridad de la información",
+      "Monitoreo y mejora del desempeño"
+    ],
+    "idealFor": [
+      "Áreas con alto volumen de documentos",
+      "Equipos que responden las mismas consultas una y otra vez",
+      "Empresas con datos históricos que no se aprovechan"
+    ]
+  },
+  {
+    "slug": "infraestructura",
+    "name": "Infraestructura y redes",
+    "summary": "Servidores, nube, redes y respaldos administrados para que tu operación no se detenga.",
+    "group": "infrastructure",
+    "icon": "server",
+    "headline": "Una infraestructura estable para una operación sin interrupciones.",
+    "description": "Cada sistema de tu empresa depende de servidores, redes y conectividad confiables. Diseñamos, implementamos y administramos infraestructura en sitio, en la nube o híbrida, con respaldos y monitoreo para reducir riesgos de interrupción.",
+    "benefits": [
+      {
+        "title": "Disponibilidad",
+        "description": "Arquitecturas con redundancia y monitoreo para detectar fallas antes de que afecten la operación."
+      },
+      {
+        "title": "Respaldos verificados",
+        "description": "Políticas de respaldo y pruebas periódicas de recuperación de información."
+      },
+      {
+        "title": "Nube a la medida",
+        "description": "Migración y administración en la nube con control de costos."
+      },
+      {
+        "title": "Redes ordenadas",
+        "description": "Cableado, Wi-Fi empresarial, segmentación y enlaces entre sucursales."
+      }
+    ],
+    "includes": [
+      "Evaluación de la infraestructura actual",
+      "Diseño de red y arquitectura de servidores",
+      "Implementación en sitio, nube o híbrida",
+      "Respaldos y plan de recuperación ante desastres",
+      "Monitoreo y administración continua",
+      "Documentación e inventario de activos"
+    ],
+    "idealFor": [
+      "Empresas con servidores sin mantenimiento ni respaldo",
+      "Organizaciones con varias sucursales",
+      "Equipos que planean migrar a la nube"
+    ]
+  },
+  {
+    "slug": "ciberseguridad",
+    "name": "Ciberseguridad",
+    "summary": "Evaluación de riesgos, control de accesos y protección de la información crítica de tu empresa.",
+    "group": "infrastructure",
+    "icon": "shield",
+    "headline": "Protege la información que sostiene tu negocio.",
+    "description": "Un incidente de seguridad puede detener la operación y comprometer información de clientes. Evaluamos tus riesgos, priorizamos controles y acompañamos su implementación con un enfoque práctico, proporcional al tamaño de tu empresa.",
+    "benefits": [
+      {
+        "title": "Riesgos identificados",
+        "description": "Evaluación de vulnerabilidades y un plan de acción priorizado por impacto."
+      },
+      {
+        "title": "Accesos controlados",
+        "description": "Autenticación multifactor, permisos mínimos y gestión de cuentas."
+      },
+      {
+        "title": "Protección de equipos y correo",
+        "description": "Antimalware, filtrado de correo y actualizaciones gestionadas."
+      },
+      {
+        "title": "Cultura de seguridad",
+        "description": "Capacitación al personal para prevenir fraudes y suplantación de identidad."
+      }
+    ],
+    "includes": [
+      "Diagnóstico de seguridad y análisis de vulnerabilidades",
+      "Políticas de contraseñas, accesos y uso aceptable",
+      "Configuración segura de equipos, redes y nube",
+      "Respaldos protegidos contra ransomware",
+      "Plan de respuesta a incidentes",
+      "Capacitación y concientización"
+    ],
+    "idealFor": [
+      "Empresas que manejan datos personales o financieros",
+      "Organizaciones sin un responsable de seguridad",
+      "Equipos que trabajan de forma remota o híbrida"
+    ]
+  },
+  {
+    "slug": "soporte-it",
+    "name": "Soporte y mantenimiento IT",
+    "summary": "Atención técnica continua, monitoreo y mantenimiento preventivo con tiempos de respuesta definidos.",
+    "group": "infrastructure",
+    "icon": "life-buoy",
+    "headline": "Soporte técnico que mantiene a tu equipo trabajando.",
+    "description": "Las fallas de equipos, accesos o sistemas cuestan horas productivas. Ofrecemos soporte técnico continuo con mesa de ayuda, mantenimiento preventivo y acuerdos de nivel de servicio para que tu equipo se concentre en su trabajo.",
+    "benefits": [
+      {
+        "title": "Mesa de ayuda",
+        "description": "Un canal único para reportar incidencias, con seguimiento y registro de cada caso."
+      },
+      {
+        "title": "Mantenimiento preventivo",
+        "description": "Revisiones programadas para reducir fallas inesperadas."
+      },
+      {
+        "title": "Tiempos definidos",
+        "description": "Acuerdos de nivel de servicio según la criticidad de cada incidente."
+      },
+      {
+        "title": "Visibilidad",
+        "description": "Reportes periódicos de incidencias, activos y recomendaciones."
+      }
+    ],
+    "includes": [
+      "Soporte remoto y en sitio",
+      "Inventario de equipos y licencias",
+      "Actualizaciones y parches de seguridad",
+      "Altas, bajas y cambios de usuarios",
+      "Mantenimiento de sistemas desarrollados a medida",
+      "Reportes mensuales de servicio"
+    ],
+    "idealFor": [
+      "Empresas sin área de sistemas interna",
+      "Áreas de TI que necesitan apoyo adicional",
+      "Organizaciones con sistemas críticos para su operación"
+    ]
+  }
+]

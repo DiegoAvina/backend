@@ -1,0 +1,318 @@
+[
+  {
+    "slug": "inventarios",
+    "name": "Gestión de inventarios",
+    "category": "Operaciones",
+    "tagline": "Existencias claras en todos tus almacenes.",
+    "description": "Controla entradas, salidas y transferencias entre almacenes con alertas de stock mínimo y trazabilidad por lote.",
+    "features": [
+      "Multialmacén",
+      "Alertas de stock mínimo",
+      "Kardex por producto",
+      "Lectura de código de barras"
+    ],
+    "status": "in_development",
+    "icon": "boxes",
+    "featured": true,
+    "audience": "Comercios, distribuidores y empresas con uno o varios almacenes.",
+    "problems": [
+      "Las existencias del sistema no coinciden con el almacén físico.",
+      "Se descubre la falta de un producto cuando ya no hay tiempo de reabastecer.",
+      "No hay registro claro de quién movió qué mercancía y cuándo."
+    ],
+    "modules": [
+      {
+        "title": "Catálogo y almacenes",
+        "description": "Productos, unidades de medida, ubicaciones y múltiples almacenes."
+      },
+      {
+        "title": "Movimientos",
+        "description": "Entradas, salidas, ajustes y transferencias con documento soporte."
+      },
+      {
+        "title": "Reabastecimiento",
+        "description": "Stock mínimo y máximo con alertas y sugerencias de compra."
+      },
+      {
+        "title": "Inventarios físicos",
+        "description": "Conteos cíclicos con lector de código de barras y conciliación."
+      }
+    ]
+  },
+  {
+    "slug": "asistencia-personal",
+    "name": "Asistencia y personal",
+    "category": "Recursos humanos",
+    "tagline": "Registro de asistencia sin hojas de cálculo.",
+    "description": "Registra entradas y salidas, gestiona incidencias, vacaciones y permisos, y genera reportes listos para nómina.",
+    "features": [
+      "Registro desde móvil",
+      "Incidencias y permisos",
+      "Turnos y horarios",
+      "Reportes para nómina"
+    ],
+    "status": "in_development",
+    "icon": "users",
+    "featured": true,
+    "audience": "Empresas con personal en turnos, sucursales o trabajo en campo.",
+    "problems": [
+      "La asistencia se consolida a mano antes de cada nómina.",
+      "Las solicitudes de vacaciones y permisos se pierden entre mensajes.",
+      "No hay visibilidad de retardos y ausencias por área."
+    ],
+    "modules": [
+      {
+        "title": "Registro de asistencia",
+        "description": "Entradas y salidas desde móvil o terminal, con ubicación opcional."
+      },
+      {
+        "title": "Turnos y horarios",
+        "description": "Horarios por colaborador, rotaciones y días de descanso."
+      },
+      {
+        "title": "Incidencias",
+        "description": "Vacaciones, permisos e incapacidades con flujo de aprobación."
+      },
+      {
+        "title": "Prenómina",
+        "description": "Reportes consolidados por periodo listos para el cálculo de nómina."
+      }
+    ]
+  },
+  {
+    "slug": "mantenimiento",
+    "name": "Gestión de mantenimiento",
+    "category": "Operaciones",
+    "tagline": "Mantenimiento preventivo, no reactivo.",
+    "description": "Planifica mantenimientos preventivos, registra correctivos y conoce el historial y costo de cada equipo.",
+    "features": [
+      "Calendario preventivo",
+      "Historial por equipo",
+      "Órdenes de servicio",
+      "Costos de mantenimiento"
+    ],
+    "status": "in_development",
+    "icon": "wrench",
+    "featured": true,
+    "audience": "Plantas, flotillas, edificios e instalaciones con equipos críticos.",
+    "problems": [
+      "Los equipos se atienden solo cuando fallan.",
+      "No existe un historial confiable de reparaciones por equipo.",
+      "Se desconoce cuánto cuesta realmente mantener cada activo."
+    ],
+    "modules": [
+      {
+        "title": "Activos",
+        "description": "Inventario de equipos con ubicación, ficha técnica y documentos."
+      },
+      {
+        "title": "Plan preventivo",
+        "description": "Rutinas por tiempo o uso con calendario y recordatorios."
+      },
+      {
+        "title": "Órdenes de servicio",
+        "description": "Correctivos y preventivos asignados a técnicos con evidencia."
+      },
+      {
+        "title": "Indicadores",
+        "description": "Historial, tiempos de atención y costos por equipo."
+      }
+    ]
+  },
+  {
+    "slug": "gestion-documental",
+    "name": "Gestión documental",
+    "category": "Administración",
+    "tagline": "Documentos y aprobaciones en un solo flujo.",
+    "description": "Centraliza documentos, define flujos de aprobación y conserva el historial de versiones y firmas.",
+    "features": [
+      "Flujos de aprobación",
+      "Control de versiones",
+      "Permisos por área",
+      "Búsqueda de texto completo"
+    ],
+    "status": "in_development",
+    "icon": "file-check",
+    "featured": true,
+    "audience": "Áreas administrativas, de calidad y legales que gestionan documentos controlados.",
+    "problems": [
+      "Los documentos viven en correos y carpetas compartidas sin control.",
+      "Las aprobaciones se retrasan porque nadie sabe en qué paso están.",
+      "Es difícil demostrar qué versión estaba vigente en una fecha."
+    ],
+    "modules": [
+      {
+        "title": "Repositorio",
+        "description": "Carpetas por área con permisos, etiquetas y búsqueda."
+      },
+      {
+        "title": "Flujos de aprobación",
+        "description": "Revisiones secuenciales o paralelas con notificaciones."
+      },
+      {
+        "title": "Versiones",
+        "description": "Historial de cambios, vigencias y bitácora de consultas."
+      },
+      {
+        "title": "Plantillas",
+        "description": "Formatos estandarizados para solicitudes y documentos frecuentes."
+      }
+    ]
+  },
+  {
+    "slug": "crm",
+    "name": "CRM comercial",
+    "category": "Ventas",
+    "tagline": "Cada oportunidad, con seguimiento.",
+    "description": "Organiza prospectos, oportunidades y actividades comerciales para que ningún seguimiento se pierda.",
+    "features": [
+      "Embudo de ventas",
+      "Agenda de seguimientos",
+      "Cotizaciones",
+      "Reportes por vendedor"
+    ],
+    "status": "in_development",
+    "icon": "contact",
+    "audience": "Equipos comerciales de empresas de servicios, distribución y manufactura.",
+    "problems": [
+      "La información de los clientes depende de la libreta de cada vendedor.",
+      "Las oportunidades se enfrían por falta de seguimiento.",
+      "La dirección no tiene visibilidad del pronóstico de ventas."
+    ],
+    "modules": [
+      {
+        "title": "Contactos y empresas",
+        "description": "Historial de interacciones por cliente y prospecto."
+      },
+      {
+        "title": "Embudo de ventas",
+        "description": "Etapas configurables con valor y probabilidad de cierre."
+      },
+      {
+        "title": "Actividades",
+        "description": "Llamadas, visitas y tareas con recordatorios."
+      },
+      {
+        "title": "Cotizaciones y reportes",
+        "description": "Propuestas comerciales y desempeño por vendedor."
+      }
+    ]
+  },
+  {
+    "slug": "control-gastos",
+    "name": "Control de gastos",
+    "category": "Finanzas",
+    "tagline": "Gastos comprobados y autorizados a tiempo.",
+    "description": "Solicitudes de gasto, comprobación con XML de CFDI y autorizaciones por nivel con visibilidad por centro de costo.",
+    "features": [
+      "Comprobación con CFDI",
+      "Autorizaciones por nivel",
+      "Centros de costo",
+      "Reembolsos"
+    ],
+    "status": "in_development",
+    "icon": "wallet",
+    "audience": "Empresas con viáticos, fondos fijos o gastos por comprobar.",
+    "problems": [
+      "Las comprobaciones llegan incompletas o fuera de tiempo.",
+      "Validar facturas una por una consume horas del área contable.",
+      "No hay control del gasto por proyecto o centro de costo."
+    ],
+    "modules": [
+      {
+        "title": "Solicitudes",
+        "description": "Anticipos y gastos con justificación y presupuesto."
+      },
+      {
+        "title": "Comprobación",
+        "description": "Carga de XML y PDF de CFDI con validación de datos."
+      },
+      {
+        "title": "Autorizaciones",
+        "description": "Reglas por monto, área y centro de costo."
+      },
+      {
+        "title": "Reembolsos y reportes",
+        "description": "Saldos por colaborador y gasto por centro de costo."
+      }
+    ]
+  },
+  {
+    "slug": "proveedores",
+    "name": "Gestión de proveedores",
+    "category": "Compras",
+    "tagline": "Proveedores evaluados y documentados.",
+    "description": "Alta, documentación y evaluación de proveedores con historial de compras y vencimiento de documentos.",
+    "features": [
+      "Expediente digital",
+      "Evaluación de desempeño",
+      "Vencimiento de documentos",
+      "Historial de compras"
+    ],
+    "status": "in_development",
+    "icon": "truck",
+    "audience": "Áreas de compras y abastecimiento con un padrón amplio de proveedores.",
+    "problems": [
+      "Los expedientes de proveedores están incompletos o vencidos.",
+      "La elección de proveedores no se basa en su desempeño real.",
+      "El alta de un proveedor nuevo involucra demasiados correos."
+    ],
+    "modules": [
+      {
+        "title": "Alta y expediente",
+        "description": "Registro con documentos fiscales, legales y bancarios."
+      },
+      {
+        "title": "Vigencias",
+        "description": "Alertas de vencimiento de documentos y certificaciones."
+      },
+      {
+        "title": "Evaluación",
+        "description": "Calificación por calidad, tiempo de entrega y servicio."
+      },
+      {
+        "title": "Historial",
+        "description": "Compras, incidencias y comunicación por proveedor."
+      }
+    ]
+  },
+  {
+    "slug": "ordenes-trabajo",
+    "name": "Órdenes de trabajo",
+    "category": "Operaciones",
+    "tagline": "Del levantamiento al cierre, sin perder el hilo.",
+    "description": "Crea, asigna y da seguimiento a órdenes de trabajo con evidencia fotográfica y firma de conformidad.",
+    "features": [
+      "Asignación a técnicos",
+      "Evidencia fotográfica",
+      "Firma de conformidad",
+      "Tiempos de atención"
+    ],
+    "status": "in_development",
+    "icon": "clipboard-list",
+    "audience": "Empresas de servicios, instalación y soporte técnico en sitio.",
+    "problems": [
+      "Las órdenes se coordinan por teléfono y mensajes sin registro.",
+      "No hay evidencia del trabajo realizado ante el cliente.",
+      "Se desconocen los tiempos reales de atención por técnico."
+    ],
+    "modules": [
+      {
+        "title": "Levantamiento",
+        "description": "Solicitudes de clientes con prioridad y ubicación."
+      },
+      {
+        "title": "Asignación",
+        "description": "Agenda de técnicos y asignación por zona o especialidad."
+      },
+      {
+        "title": "Ejecución en campo",
+        "description": "Checklist, fotografías y firma desde el móvil."
+      },
+      {
+        "title": "Cierre y métricas",
+        "description": "Reporte al cliente y tiempos de atención."
+      }
+    ]
+  }
+]
