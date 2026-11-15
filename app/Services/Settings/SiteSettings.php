@@ -3,9 +3,11 @@
 namespace App\Services\Settings;
 
 use App\Enums\SettingKey;
+use App\Enums\SiteMode;
 use App\Jobs\RevalidateFrontendContent;
 use App\Models\Setting;
 use App\Services\Audit\AuditLogger;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +24,14 @@ class SiteSettings
         $value = Setting::query()->where('key', $key->value)->value('value');
 
         return $value === null || $value === '' ? null : (string) $value;
+    }
+
+    /**
+     * Modo actual del sitio público. Sin valor capturado, el sitio está en línea.
+     */
+    public function siteMode(): SiteMode
+    {
+        return SiteMode::tryFrom((string) $this->get(SettingKey::SiteMode)) ?? SiteMode::Live;
     }
 
     /**
@@ -58,9 +68,13 @@ class SiteSettings
             }
 
             $value = $all[$key->value];
-            $values[$key->value] = $key->type() === 'image' && $value !== null
-                ? Storage::disk('public')->url($value)
-                : $value;
+            $values[$key->value] = match (true) {
+                $key === SettingKey::SiteMode => $this->siteMode()->value,
+                $value === null => null,
+                $key->type() === 'image' => Storage::disk('public')->url($value),
+                $key->type() === 'datetime' => Carbon::parse($value)->toIso8601String(),
+                default => $value,
+            };
         }
 
         return $values;
@@ -89,6 +103,11 @@ class SiteSettings
             foreach ($validated as $keyName => $value) {
                 $value = is_string($value) ? trim($value) : null;
                 $value = $value === '' ? null : $value;
+
+                // "En línea" es el estado por omisión: se guarda como vacío.
+                if ($keyName === SettingKey::SiteMode->value && $value === SiteMode::Live->value) {
+                    $value = null;
+                }
 
                 if ($current[$keyName] === $value) {
                     continue;

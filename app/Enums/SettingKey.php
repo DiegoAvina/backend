@@ -14,6 +14,9 @@ use Filament\Support\Contracts\HasLabel;
  */
 enum SettingKey: string implements HasLabel
 {
+    case SiteMode = 'site_mode';
+    case SiteModeMessage = 'site_mode_message';
+    case SiteModeUntil = 'site_mode_until';
     case BrandName = 'brand_name';
     case BrandLogo = 'brand_logo';
     case BrandDescription = 'brand_description';
@@ -39,6 +42,9 @@ enum SettingKey: string implements HasLabel
     public function label(): string
     {
         return match ($this) {
+            self::SiteMode => 'Modo del sitio',
+            self::SiteModeMessage => 'Mensaje para los visitantes',
+            self::SiteModeUntil => 'Fecha estimada (lanzamiento o regreso)',
             self::BrandName => 'Nombre de marca',
             self::BrandLogo => 'Logotipo',
             self::BrandDescription => 'Descripción de la empresa',
@@ -69,7 +75,8 @@ enum SettingKey: string implements HasLabel
     }
 
     /**
-     * Tipo de dato: string, text, email, phone, whatsapp, url, image o emails.
+     * Tipo de dato: string, text, email, phone, whatsapp, url, image, emails,
+     * mode (modo del sitio) o datetime.
      */
     public function type(): string
     {
@@ -81,6 +88,9 @@ enum SettingKey: string implements HasLabel
             self::SocialLinkedin, self::SocialFacebook, self::SocialInstagram, self::SocialYoutube => 'url',
             self::BrandLogo, self::SeoImage => 'image',
             self::NotificationRecipients => 'emails',
+            self::SiteMode => 'mode',
+            self::SiteModeMessage => 'text',
+            self::SiteModeUntil => 'datetime',
             default => 'string',
         };
     }
@@ -88,6 +98,7 @@ enum SettingKey: string implements HasLabel
     public function group(): string
     {
         return match ($this) {
+            self::SiteMode, self::SiteModeMessage, self::SiteModeUntil => 'status',
             self::BrandName, self::BrandLogo, self::BrandDescription => 'brand',
             self::ContactEmail, self::ContactPhone, self::WhatsappNumber, self::ContactCity, self::Address => 'contact',
             self::SocialLinkedin, self::SocialFacebook, self::SocialInstagram, self::SocialYoutube => 'social',
@@ -122,6 +133,8 @@ enum SettingKey: string implements HasLabel
             'text' => ['max:1000'],
             'image' => ['max:255'],
             'emails' => ['max:1000'],
+            'mode' => ['in:'.implode(',', SiteMode::values())],
+            'datetime' => ['date'],
             default => ['max:160'],
         };
     }
@@ -129,6 +142,7 @@ enum SettingKey: string implements HasLabel
     public static function groupLabel(string $group): string
     {
         return match ($group) {
+            'status' => 'Estado del sitio',
             'brand' => 'Marca',
             'contact' => 'Contacto',
             'social' => 'Redes sociales',

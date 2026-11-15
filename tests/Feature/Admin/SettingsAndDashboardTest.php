@@ -3,6 +3,7 @@
 use App\Enums\LeadSource;
 use App\Enums\RequestStatus;
 use App\Enums\SettingKey;
+use App\Enums\SiteMode;
 use App\Enums\UserRole;
 use App\Filament\Pages\ManageSettings;
 use App\Filament\Widgets\CommercialStatsOverview;
@@ -28,6 +29,7 @@ use App\Services\Settings\SiteSettings;
 use Database\Seeders\SettingsSeeder;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Livewire\Livewire;
 
 describe('site settings', function () {
@@ -81,6 +83,39 @@ describe('site settings', function () {
         $this->get(ManageSettings::getUrl())->assertForbidden();
     })->with([UserRole::Sales, UserRole::Editor, UserRole::Viewer]);
 
+    it('switches the site mode from the panel and back online', function () {
+        actingAsRole(UserRole::Admin);
+        Queue::fake();
+        $settings = app(SiteSettings::class);
+
+        Livewire::test(ManageSettings::class)
+            ->assertFormSet(['site_mode' => SiteMode::Live])
+            ->assertFormFieldHidden('site_mode_message')
+            ->fillForm(['site_mode' => SiteMode::Maintenance->value])
+            ->assertFormFieldVisible('site_mode_message')
+            ->fillForm(['site_mode_message' => 'Volvemos en una hora.', 'site_mode_until' => '2026-12-01 10:00'])
+            ->call('save')
+            ->assertHasNoFormErrors();
+
+        expect($settings->siteMode())->toBe(SiteMode::Maintenance)
+            ->and($settings->get(SettingKey::SiteModeMessage))->toBe('Volvemos en una hora.')
+            ->and($settings->get(SettingKey::SiteModeUntil))->toBe('2026-12-01 16:00');
+
+        Queue::assertPushed(RevalidateFrontendContent::class, fn ($job) => $job->tags === ['settings']);
+
+        Livewire::test(ManageSettings::class)
+            ->fillForm(['site_mode' => SiteMode::Live->value])
+            ->call('save')
+            ->assertHasNoFormErrors();
+
+        expect($settings->siteMode())->toBe(SiteMode::Live)
+            ->and($settings->get(SettingKey::SiteMode))->toBeNull();
+    });
+
+    it('rejects an unknown site mode', function () {
+        app(SiteSettings::class)->update(['site_mode' => 'hackeado']);
+    })->throws(ValidationException::class);
+
     it('deletes the previous logo when it is replaced', function () {
         Storage::fake('public');
         Storage::disk('public')->put('branding/anterior.png', 'x');
@@ -109,6 +144,18 @@ describe('public settings endpoint', function () {
             ->toHaveKey('contact_phone', null)
             ->not->toHaveKey('notification_recipients')
             ->and($response->getContent())->not->toContain('interno@example.com');
+    });
+
+    it('publishes the site mode, defaulting to live', function () {
+        expect($this->getJson('/api/v1/settings/public')->json('data'))
+            ->toHaveKey('site_mode', 'live')
+            ->toHaveKey('site_mode_until', null);
+
+        app(SiteSettings::class)->update(['site_mode' => 'coming_soon', 'site_mode_until' => '2026-12-01 16:00:00']);
+
+        expect($this->getJson('/api/v1/settings/public')->json('data'))
+            ->toHaveKey('site_mode', 'coming_soon')
+            ->toHaveKey('site_mode_until', '2026-12-01T16:00:00+00:00');
     });
 
     it('returns images as absolute public URLs', function () {

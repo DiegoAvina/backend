@@ -3,19 +3,23 @@
 namespace App\Filament\Pages;
 
 use App\Enums\SettingKey;
+use App\Enums\SiteMode;
 use App\Filament\Support\ContentFields;
 use App\Services\Settings\SiteSettings;
 use BackedEnum;
 use Filament\Actions\Action;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\EmbeddedSchema;
 use Filament\Schemas\Components\Form;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +44,11 @@ class ManageSettings extends Page
     protected static ?string $slug = 'configuracion';
 
     /**
+     * Zona horaria en la que el equipo captura fechas; se guardan en UTC.
+     */
+    private const string ADMIN_TIMEZONE = 'America/Mexico_City';
+
+    /**
      * @var array<string, mixed>|null
      */
     public ?array $data = [];
@@ -51,7 +60,10 @@ class ManageSettings extends Page
 
     public function mount(SiteSettings $settings): void
     {
-        $this->form->fill($settings->all());
+        $this->form->fill([
+            ...$settings->all(),
+            SettingKey::SiteMode->value => $settings->siteMode()->value,
+        ]);
     }
 
     public function form(Schema $schema): Schema
@@ -60,7 +72,11 @@ class ManageSettings extends Page
 
         foreach (collect(SettingKey::cases())->groupBy(fn (SettingKey $key) => $key->group()) as $group => $keys) {
             $sections[] = Section::make(SettingKey::groupLabel($group))
-                ->description($group === 'notifications' ? 'Privado: nunca se publica en el sitio ni en la API.' : null)
+                ->description(match ($group) {
+                    'notifications' => 'Privado: nunca se publica en el sitio ni en la API.',
+                    'status' => 'Fuera de "En línea", todas las páginas del sitio muestran solo el aviso elegido. El panel sigue disponible.',
+                    default => null,
+                })
                 ->columns(2)
                 ->collapsible()
                 ->schema($keys->map(fn (SettingKey $key) => $this->field($key))->all());
@@ -87,7 +103,12 @@ class ManageSettings extends Page
     {
         abort_unless(static::canAccess(), 403);
 
-        $changed = $settings->update($this->form->getState());
+        $state = array_map(
+            fn (mixed $value): mixed => $value instanceof BackedEnum ? $value->value : $value,
+            $this->form->getState(),
+        );
+
+        $changed = $settings->update($state);
 
         Notification::make()
             ->success()
@@ -98,6 +119,9 @@ class ManageSettings extends Page
     private function field(SettingKey $key): Field
     {
         $field = match ($key->type()) {
+            'mode' => ToggleButtons::make($key->value)->options(SiteMode::class)->required()->live()->columns(['default' => 1, 'sm' => 2, 'xl' => 4])->columnSpanFull(),
+            'datetime' => DateTimePicker::make($key->value)->seconds(false)->timezone(self::ADMIN_TIMEZONE)
+                ->helperText('Hora del centro de México. En "Próximamente" muestra una cuenta regresiva; vacío para no mostrar fecha.'),
             'text' => Textarea::make($key->value)->rows(3)->maxLength(1000)->columnSpanFull(),
             'emails' => Textarea::make($key->value)->rows(2)->maxLength(1000)->columnSpanFull()
                 ->helperText('Correos separados por coma. Solo se usan si las notificaciones están habilitadas en el servidor.'),
@@ -109,6 +133,18 @@ class ManageSettings extends Page
                 ->helperText('Solo dígitos con lada internacional, p. ej. 52XXXXXXXXXX.'),
             default => TextInput::make($key->value)->maxLength(160),
         };
+
+        if (in_array($key, [SettingKey::SiteModeMessage, SettingKey::SiteModeUntil], true)) {
+            $field->visible(function (Get $get): bool {
+                $mode = $get(SettingKey::SiteMode->value);
+
+                return ($mode instanceof SiteMode ? $mode : SiteMode::tryFrom((string) $mode)) !== SiteMode::Live;
+            });
+        }
+
+        if ($key === SettingKey::SiteModeMessage) {
+            $field->placeholder('Opcional. Si se deja vacío se muestra un texto predeterminado para el modo elegido.');
+        }
 
         return $field->label($key->label())->rules($key->rules());
     }
